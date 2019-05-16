@@ -15,6 +15,7 @@ public class Client {
     }
 
     private void clientStart() {
+        //workers 可以指定个数
         EventLoopGroup workers = new NioEventLoopGroup();
         Bootstrap b = new Bootstrap();
         b.group(workers)
@@ -47,6 +48,7 @@ public class Client {
 }
 
 class ClientHandler extends ChannelInboundHandlerAdapter {
+    //channelActive 一旦通道建立之后我就往外写一个
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("channel is activated.");
